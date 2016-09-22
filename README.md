@@ -25,38 +25,3 @@ http://www.html5rocks.com/en/tutorials/webaudio/intro/
 
 # Licence
 Copyright© 2016 Alexandre Robert de Massy, released under ISC licence.
-
-
-
-
-random notes....
-utiliser WebM/Opus a la place de mp3 
-WebM
-Image illustrative de l'article WebM
-Logo du format WebM
-Extension	.webm (.weba est envisagé pour l’audio seul)
-Type MIME	video/webm,
-audio/webm
-
-
-
-Here is a cross-browser stream.stop hack:
-
-var MediaStream = window.MediaStream;
-
-if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
-    MediaStream = webkitMediaStream;
-}
-
-/*global MediaStream:true */
-if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
-    MediaStream.prototype.stop = function() {
-        this.getAudioTracks().forEach(function(track) {
-            track.stop();
-        });
-
-        this.getVideoTracks().forEach(function(track) {
-            track.stop();
-        });
-    };
-}
