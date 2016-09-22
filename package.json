@@ -1,0 +1,20 @@
+{
+  "name": "getaudio",
+  "version": "1.0.0",
+  "description": "Small client & server code that records from a user microphone at the press of a button using Media Stream API (aka WebRTC), compressses the audio stream to webm/opus and sends it to the server",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alexandre Robert de Massy",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "debug": "^2.2.0",
+    "express": "^4.14.0",
+    "socketio": "^1.0.0",
+    "watch": "^0.19.2"
+  }
+}
