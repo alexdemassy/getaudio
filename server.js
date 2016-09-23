@@ -14,7 +14,7 @@ const watch = require('watch');
 const port = process.argv[2] || 8000;
 
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.raw({ type: 'audio/webm'}));
+app.use(bodyParser.raw({ type: 'audio/webm', limit: '20mb' })); // set max request size to 20mb
 
 server.listen(port, () => {
     console.log('info: app running on port :' + port);
