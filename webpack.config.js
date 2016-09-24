@@ -1,4 +1,7 @@
 module.exports = {
     entry: './public/lib/main.js',
-    output: './public/index.js'
+    output: {
+         path: './public',
+         filename: 'index.js'
+     }
 }

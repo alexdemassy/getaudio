@@ -1,5 +1,6 @@
 'use strict';
 require('webrtc-adapter');
+var $ = require('jquery');
 var constraints = { audio: true, video: false };
 
 var options = {mimeType: 'audio/webm;codecs=opus'};
@@ -7,16 +8,16 @@ var mediaRecorder;
 var recordedChunks = [];
 var mediaStream;
 
-$('#recording-start').click(() => {
+$('#recording-start').click(function() {
     console.log('info: Start recording button pressed');
 
     // Disable upload/dowload until new audio recorded
     $('#recording-upload').prop('disabled', true);
     $('#recording-download').prop('disabled', true);
     
-    //     console.log(navigator.getUserMedia);
+        console.log(window.adapter);
     // var getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || {};
-    navigator.mediaDevices.getUserMedia(constraints)
+    window.navigator.mediaDevices.getUserMedia(constraints)
     .then(function(stream) {
         console.log('info: Setting up recorder');
         recordedChunks = [];
@@ -58,13 +59,13 @@ function handleDataAvailable(event) {
     }
 }
 
-$('#recording-stop').click(() => {
+$('#recording-stop').click(function() {
     console.log('info: Stoping recording...');
     // stop recording
     mediaRecorder.stop();
 
     // close mediaDevices tracks
-    mediaStream.getAudioTracks().forEach((track) => {
+    mediaStream.getAudioTracks().forEach(function(track) {
         track.stop();
         console.log('info: Stoping audio track ' + track);
     });
@@ -83,7 +84,7 @@ $('#recording-stop').click(() => {
     $('#recording-download').prop('disabled', false);
 });
 
-$('#recording-upload').click(() => {
+$('#recording-upload').click(function() {
     console.log('info: Uploading audio file to server');
     // ajax post request
     var data = new Blob(recordedChunks, {
@@ -120,7 +121,7 @@ $('#recording-upload').click(() => {
 
 });
 
-$('#recording-download').click(() => {
+$('#recording-download').click(function() {
     console.log('info: Downloading audio file');
     download();
 });
