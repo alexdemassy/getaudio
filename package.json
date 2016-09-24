@@ -5,7 +5,7 @@
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "webpack ./public/lib/main.js ./public/index.js && node server.js"
   },
   "author": "Alexandre Robert de Massy",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "debug": "^2.2.0",
     "express": "^4.14.0",
     "socketio": "^1.0.0",
-    "watch": "^0.19.2"
+    "watch": "^0.19.2",
+    "webrtc-adapter": "^2.0.3"
   }
 }

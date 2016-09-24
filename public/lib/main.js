@@ -1,5 +1,5 @@
 'use strict';
-
+require('webrtc-adapter');
 var constraints = { audio: true, video: false };
 
 var options = {mimeType: 'audio/webm;codecs=opus'};
@@ -14,6 +14,8 @@ $('#recording-start').click(() => {
     $('#recording-upload').prop('disabled', true);
     $('#recording-download').prop('disabled', true);
     
+    //     console.log(navigator.getUserMedia);
+    // var getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || {};
     navigator.mediaDevices.getUserMedia(constraints)
     .then(function(stream) {
         console.log('info: Setting up recorder');
